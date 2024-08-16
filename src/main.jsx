@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import "./styles/app.scss";
 import { createContext } from "react";
+import "./index.css";
 
-export const server = "https://nodejs-todoapp.onrender.com/api/v1";
+export const server = "https://pomodoro-timer-full-stack.onrender.com/api/v1";
 
 export const Context = createContext({ isAuthenticated: false });
 

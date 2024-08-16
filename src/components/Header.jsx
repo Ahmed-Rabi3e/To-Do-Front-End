@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { Context, server } from "../main";
+import logo from "../assets/to-do.png"
 
 const Header = () => {
   const { isAuthenticated, setIsAuthenticated, loading, setLoading } =
@@ -26,21 +27,27 @@ const Header = () => {
   };
 
   return (
-    <nav className="header">
+    <nav className="w-full h-16 bg-dark text-white px-8 py-4 flex items-center justify-between">
       <div>
-        <h2>Todo App.</h2>
+        <Link to={"/"} className="text-2xl font-bold text-primaryDark">
+          <img src={logo} alt="Logo" className="w-24" />
+        </Link>
       </div>
-      <article>
-        <Link to={"/"}>Home</Link>
-        <Link to={"/profile"}>Profile</Link>
+      <div className="flex gap-4 items-center font-semibold font-mono">
+        <Link to={"/"}>Tasks</Link>
+        {isAuthenticated && <Link to={"/profile"}>Profile</Link>}
         {isAuthenticated ? (
-          <button disabled={loading} onClick={logoutHandler} className="btn">
+          <button
+            disabled={loading}
+            onClick={logoutHandler}
+            className="bg-primaryDark p-2 rounded text-light font-semibold"
+          >
             Logout
           </button>
         ) : (
           <Link to={"/login"}>Login</Link>
         )}
-      </article>
+      </div>
     </nav>
   );
 };

@@ -88,33 +88,40 @@ const Home = () => {
   if (!isAuthenticated) return <Navigate to={"/login"} />;
 
   return (
-    <div className="container">
-      <div className="login">
-        <section>
-          <form onSubmit={submitHandler}>
-            <input
-              type="text"
-              placeholder="Title"
-              required
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="Description"
-              required
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
+    <div className="w-full h-[calc(100vh-64px)] bg-light flex flex-col justify-center items-center">
+      <div className="">
+        <form
+          className="flex flex-col w-[500px] bg-dark p-14 rounded my-10"
+          onSubmit={submitHandler}
+        >
+          <input
+            type="text"
+            placeholder="Title"
+            required
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="p-2 my-2 outline-none text-black  white placeholder:text-black/50 text-md"
+          />
+          <input
+            type="text"
+            placeholder="Description"
+            required
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            className="p-2 my-2 outline-none text-black  white placeholder:text-black/50 text-md"
+          />
 
-            <button disabled={loading} type="submit">
-              Add Task
-            </button>
-          </form>
-        </section>
+          <button
+            className="bg-primaryDark px-4 py-2 rounded-3xl text-white font-bold my-2 w-full hover:bg-black cursor-pointer"
+            disabled={loading}
+            type="submit"
+          >
+            Add Task
+          </button>
+        </form>
       </div>
 
-      <section className="todosContainer">
+      <section className="grid grid-cols-3 gap-4">
         {tasks.map((i) => (
           <TodoItem
             title={i.title}

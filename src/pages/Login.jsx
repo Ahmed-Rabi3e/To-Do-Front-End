@@ -42,30 +42,42 @@ const Login = () => {
   if (isAuthenticated) return <Navigate to={"/"} />;
 
   return (
-    <div className="login">
-      <section>
-        <form onSubmit={submitHandler}>
-          <input
-            type="email"
-            placeholder="Email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            required
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button disabled={loading} type="submit">
-            Login
-          </button>
-          <h4>Or</h4>
-          <Link to="/register">Sign Up</Link>
-        </form>
-      </section>
+    <div className="w-full h-[calc(100vh-64px)] bg-light flex justify-center items-center">
+      <form
+        className="flex flex-col justify-center items-center p-16 border-2 border-primaryDark"
+        onSubmit={submitHandler}
+      >
+        <h2 className="font-extrabold text-primaryDark my-4 mb-10 text-5xl">
+          Login
+        </h2>
+        <input
+          type="email"
+          placeholder="Email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="p-2 my-2 outline-none text-black rounded-md bg-dark/75 placeholder:text-white/75 text-md"
+        />
+        <input
+          type="password"
+          required
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="p-2 my-2 outline-none text-black rounded-md bg-dark/75 placeholder:text-white/75 text-md"
+        />
+        <button
+          disabled={loading}
+          type="submit"
+          className="bg-primaryDark px-4 py-2 rounded-3xl text-white font-bold my-2 w-full hover:bg-black cursor-pointer"
+        >
+          Login
+        </button>
+        <h4 className="my-2">Or</h4>
+        <Link to="/register" className="font-bold hover:underline mt-2">
+          Sign Up
+        </Link>
+      </form>
     </div>
   );
 };
